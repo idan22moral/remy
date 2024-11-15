@@ -6,6 +6,9 @@
 !README.md
 !LICENSE
 
+# GitHub
+!/.github/**/*
+
 # Go
 !*.go
 !go.sum
