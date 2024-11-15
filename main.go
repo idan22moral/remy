@@ -1,9 +1,9 @@
 package main
 
 import (
-	"remy/server"
+	"remy/cmd"
 )
 
 func main() {
-	server.Run()
+	cmd.Execute()
 }

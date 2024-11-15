@@ -15,11 +15,11 @@ var upgrader = websocket.Upgrader{
 	},
 }
 
-func Run() {
+func Run(addr string) {
 	http.HandleFunc("/ws", handleWebSocket)
 	serveStaticFiles()
 
-	err := http.ListenAndServeTLS("0.0.0.0:8888", "server.crt", "server.key", nil)
+	err := http.ListenAndServeTLS(addr, "server.crt", "server.key", nil)
 
 	if err != nil {
 		fmt.Println("Error starting server:", err)
