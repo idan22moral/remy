@@ -1,0 +1,27 @@
+# Ignore everything
+*
+
+# But not these files...
+!/.gitignore
+!README.md
+!LICENSE
+
+# Go
+!*.go
+!go.sum
+!go.mod
+
+# Frontend
+!*.html
+!*.js
+!*.css
+
+# VSCode
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# ...even if they are in subdirectories
+!*/
