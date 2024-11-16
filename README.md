@@ -3,6 +3,20 @@
     <h3>Make your phone a remote mouse</h3>
 </div>
 
+## Usage
+Start the server by running:
+
+```sh
+remy
+```
+
+Then, browse to the link on your phone / scan the printed QR code.
+
+For more information:
+```sh
+remy --help
+```
+
 ## Installation
 From source:
 ```sh
