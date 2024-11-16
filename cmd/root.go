@@ -88,7 +88,10 @@ func runServer(parameters *Parameters) {
 
 	exitSignal := make(chan interface{})
 	go func() {
-		server.Run(serverAddr)
+		err := server.Run(serverAddr)
+		if err != nil {
+			fmt.Println("Error starting server:", err)
+		}
 		close(exitSignal)
 	}()
 

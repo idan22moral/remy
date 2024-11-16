@@ -1,6 +1,7 @@
 package server
 
 import (
+	"crypto/tls"
 	"fmt"
 	"log"
 	"net/http"
@@ -15,15 +16,25 @@ var upgrader = websocket.Upgrader{
 	},
 }
 
-func Run(addr string) {
+func Run(addr string) error {
 	http.HandleFunc("/ws", handleWebSocket)
 	serveStaticFiles()
 
-	err := http.ListenAndServeTLS(addr, "server.crt", "server.key", nil)
+	rootCert, rootKey := generateCACertificate()
+	cert, _ := generateTLSCredentials(rootCert, rootKey)
 
-	if err != nil {
-		fmt.Println("Error starting server:", err)
+	server := http.Server{
+		Addr: addr,
+		TLSConfig: &tls.Config{
+			Certificates: []tls.Certificate{cert},
+		},
 	}
+
+	err := server.ListenAndServeTLS("", "")
+	if err != nil {
+		return err
+	}
+	return err
 }
 
 func serveStaticFiles() {
