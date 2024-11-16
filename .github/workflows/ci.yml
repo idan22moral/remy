@@ -33,7 +33,7 @@ jobs:
       - name: Install X11 - Linux
         if: startsWith(matrix.os, 'ubuntu')
         run: |
-          apt-get install libx11-dev libxtst-dev
+          sudo apt-get install libx11-dev libxtst-dev -y
       - name: Build
         run: go build -v -o ${{ matrix.type }}/
       - name: Archive Binaries - Unix
