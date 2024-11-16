@@ -30,6 +30,10 @@ jobs:
         uses: actions/setup-go@v3
         with:
           go-version: 1.23.2
+      - name: Install X11 - Linux
+        if: startsWith(matrix.os, 'ubuntu')
+        run: |
+          apt-get install libx11-dev libxtst-dev
       - name: Build
         run: go build -v -o ${{ matrix.type }}/
       - name: Archive Binaries - Unix
