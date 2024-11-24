@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"remy/events"
+	"remy/static"
 
 	"github.com/gorilla/websocket"
 )
@@ -38,7 +39,7 @@ func Run(addr string) error {
 }
 
 func serveStaticFiles() {
-	fs := http.FileServer(http.Dir("./static"))
+	fs := http.FileServer(http.FS(static.StaticFolder))
 	http.Handle("/", fs)
 }
 
